@@ -6,10 +6,9 @@ type CardListProps = {
 };
 
 export default function CardList({ cards }: CardListProps) {
-  console.log(cards);
   return (
     <>
-      {cards["cards"].map((card) => {
+      {cards.map((card) => {
         if (card.cmc == 0 && card.type_line.includes("Land")) {
         } else {
           return <Card key={card.id} card={card} />;

@@ -3,7 +3,10 @@ import styles from "../../styles/Home.module.css";
 import { CardData, standardCards } from "pages/api/scryfall/cards/search";
 import CardList from "components/cards/CardList";
 
-export default function Cards(cards: CardData[]) {
+type StandardCardsProps = {
+  cards: CardData[];
+};
+export default function Cards({ cards }: StandardCardsProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -28,7 +31,7 @@ export default function Cards(cards: CardData[]) {
   );
 }
 
-Cards.getInitialProps = async () => {
+Cards.getInitialProps = async (ctx) => {
   const res = await standardCards();
   return { cards: res.data };
 };
