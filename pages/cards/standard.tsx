@@ -8,7 +8,7 @@ type StandardCardsProps = {
 };
 export default function Cards({ cards }: StandardCardsProps) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Deck Page</title>
         <meta name="description" content="Deck page" />
@@ -19,7 +19,6 @@ export default function Cards({ cards }: StandardCardsProps) {
         <h1 className={styles.title}>Welcome to MTG Mentor Deck Page</h1>
 
         <p className={styles.description}>My Deck</p>
-
         <div className={styles.grid}>
           <h2>Cards &rarr;</h2>
           <CardList cards={cards} />
@@ -31,7 +30,7 @@ export default function Cards({ cards }: StandardCardsProps) {
   );
 }
 
-Cards.getInitialProps = async (ctx) => {
+Cards.getInitialProps = async () => {
   const res = await standardCards();
   return { cards: res.data };
 };
